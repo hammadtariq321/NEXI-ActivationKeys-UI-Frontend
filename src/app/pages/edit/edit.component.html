@@ -6,15 +6,15 @@
     <div class="myEditForm text-center">
         <mat-form-field appearance="fill">
             <mat-label>ID</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.id" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>KEY</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.activationKey" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>License Name</mat-label>
-            <mat-select [(ngModel)]="selectedLicense" name="food">
+            <mat-select [(ngModel)]="licenseForm.license_name" name="licensename">
               <mat-option *ngFor="let license of licenseList" [value]="license">
                 {{license}}
               </mat-option>
@@ -22,23 +22,28 @@
           </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>MAC ADDRESS</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.macAddress" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>IP ADDRESS</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.ipAddress" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>STATUS</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.status" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>DATE</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.date" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>EXPIRED</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="licenseForm.expired">
         </mat-form-field>
+        <div class="mt-5">
+            <button mat-button color="primary" (click)="update()"[hidden]="spinner">Update</button>
+            <button mat-button color="" [hidden]="spinner" (click)="cancel()">Cancel</button>
+            <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
+        </div>
     </div>
 </div>

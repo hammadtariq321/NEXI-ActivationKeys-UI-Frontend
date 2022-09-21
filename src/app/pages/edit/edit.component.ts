@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-edit',
@@ -7,11 +12,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  selectedLicense: any;
+  licenseForm: any;
   licenseList = ['NEXI Home Basic', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Pro']
-  constructor() { }
+
+  durationInSeconds = 5;
+  spinner: any = false;
+  constructor(private storage: StorageService, private route: Router, private api: ApiService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.licenseForm = this.storage.selectedActivationKey
+    if (!this.licenseForm) {
+      alert('Please Select Again')
+      this.route.navigateByUrl('/')
+    }
+  }
+
+  update() {
+    this.spinner = true
+    console.log(this.licenseForm)
+    let body = this.licenseForm
+    this.api.UpdateActivationKey(body.id, body).subscribe(
+      (res) => {
+        console.log(res)
+        this.openSnackBar()
+        this.spinner = false
+        this.route.navigateByUrl('/')
+      },
+      (err) => {
+        console.log(err)
+        this.spinner = false
+      }
+    )
+  }
+
+  cancel() {
+    this.route.navigateByUrl('/')
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
 }

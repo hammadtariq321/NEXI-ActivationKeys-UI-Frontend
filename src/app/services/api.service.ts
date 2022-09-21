@@ -15,5 +15,9 @@ export class ApiService {
     return this.http.get(this.api_url + '/activation/')
   }
 
+  UpdateActivationKey(id: number, body: any) {
+    return this.http.put(this.api_url + '/activation/' + id + '/', body)
+  }
+
 
 }

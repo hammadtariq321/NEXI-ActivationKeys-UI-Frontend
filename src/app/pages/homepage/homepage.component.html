@@ -5,8 +5,8 @@
         <h1>Activation Keys</h1>
     </div>
 
-    
-    <div class="activation_table_list">
+    <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
+    <div class="activation_table_list" [hidden]="spinner">
         <table mat-table [dataSource]="activationKeys" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.

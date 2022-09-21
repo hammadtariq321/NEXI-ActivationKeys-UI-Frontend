@@ -3,6 +3,8 @@ import { ApiService } from 'src/app/services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.component';
+import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-homepage',
@@ -11,55 +13,13 @@ import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.
 })
 export class HomepageComponent implements  OnInit {
 
-  // activationKeys: any = [
-  //   {
-  //     "id": 3676982,
-  //     "activationKey": "NexiHB7856985ATF",
-  //     "status": false,
-  //     "macAddress": null,
-  //     "ipAddress": null,
-  //     "license_name": "NEXI Home Basic",
-  //     "date": null,
-  //     "expired": "21/07/2023"
-  // },
-  //   {
-  //     "id": 3676982,
-  //     "activationKey": "NexiHB7856985ATF",
-  //     "status": false,
-  //     "macAddress": null,
-  //     "ipAddress": null,
-  //     "license_name": "NEXI Home Basic",
-  //     "date": null,
-  //     "expired": "21/07/2023"
-  // },
-  //   {
-  //     "id": 3676982,
-  //     "activationKey": "NexiHB7856985ATF",
-  //     "status": false,
-  //     "macAddress": null,
-  //     "ipAddress": null,
-  //     "license_name": "NEXI Home Basic",
-  //     "date": null,
-  //     "expired": "21/07/2023"
-  // },
-  //   {
-  //     "id": 3676982,
-  //     "activationKey": "NexiHB7856985ATF",
-  //     "status": false,
-  //     "macAddress": null,
-  //     "ipAddress": null,
-  //     "license_name": "NEXI Home Basic",
-  //     "date": null,
-  //     "expired": "21/07/2023"
-  // },
-  // ];
-
   activationKeys: any;
 
+  spinner: any = true;
   
   displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
 
-  constructor( private http: ApiService, public dialog: MatDialog ) { }
+  constructor( private http: ApiService, public dialog: MatDialog, private route: Router, private storage: StorageService ) { }
 
 
   ngOnInit(): void {
@@ -69,18 +29,22 @@ export class HomepageComponent implements  OnInit {
   getActivationKeys() {
     this.http.GetActivationKeys().subscribe(
       (res) => {
+        this.spinner = false
         this.activationKeys = res
-        console.log(res)
       },
       (err) => {
         console.log(err)
+        alert('Internet Not Stable! Try Again Later')
       }
     )
   }
 
   editKey(data: any) {
     console.log(data)
-    
+    this.storage.selectedActivationKey = data
+    if (this.storage.selectedActivationKey) {
+      this.route.navigateByUrl('edit')
+    }
   }
 
   deleteKey(data: any) {

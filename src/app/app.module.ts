@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DialogHTMLComponent } from './components/dialog-html/dialog-html.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { FormsModule } from '@angular/forms';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     HomepageComponent,
     HeaderComponent,
     DialogHTMLComponent,
-    EditComponent
+    EditComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
