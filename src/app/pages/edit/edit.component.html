@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container">
+    <div class="text-center m-5">
+        <h1>Edit Key</h1>
+    </div>
+    <div class="myEditForm text-center">
+        <mat-form-field appearance="fill">
+            <mat-label>ID</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>KEY</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>License Name</mat-label>
+            <mat-select [(ngModel)]="selectedLicense" name="food">
+              <mat-option *ngFor="let license of licenseList" [value]="license">
+                {{license}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>MAC ADDRESS</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>IP ADDRESS</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>STATUS</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>DATE</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>EXPIRED</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+</div>
