@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.component';
 
 @Component({
   selector: 'app-homepage',
@@ -55,9 +57,9 @@ export class HomepageComponent implements  OnInit {
   activationKeys: any;
 
   
-  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired'];
+  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
 
-  constructor( private http: ApiService ) { }
+  constructor( private http: ApiService, public dialog: MatDialog ) { }
 
 
   ngOnInit(): void {
@@ -75,5 +77,20 @@ export class HomepageComponent implements  OnInit {
       }
     )
   }
+
+  editKey(data: any) {
+    console.log(data)
+    
+  }
+
+  deleteKey(data: any) {
+    console.log(data)
+    let dialogRef = this.dialog.open(DialogHTMLComponent, {data: {title: 'Delete?', subTitle: 'Sure want to delete?'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    })
+  }
+
 
 }
