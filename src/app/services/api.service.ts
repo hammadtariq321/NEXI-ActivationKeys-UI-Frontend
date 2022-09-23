@@ -10,6 +10,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  GetUserToken(user: any) {
+    return this.http.post(this.api_url + '/api-token-auth/', user)
+  }
+
   GetActivationKeys() {
     return this.http.get(this.api_url + '/activation/')
   }

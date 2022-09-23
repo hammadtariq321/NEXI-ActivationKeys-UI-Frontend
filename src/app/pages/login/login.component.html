@@ -1,0 +1,27 @@
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="assets/logo.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <mat-form-field class="w-100">
+                <mat-label> Username</mat-label>
+                <input matInput placeholder="Enter your Username"  [(ngModel)]="user.username">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label> Password</mat-label>
+                <input matInput type="password" placeholder="Enter your Password"  [(ngModel)]="user.password">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="loginUser()">Login</button>
+            <div *ngIf="invalid" class="text-center mt-3">
+                <span style="color: red;">Username or Password Invalid</span>
+            </div>
+            
+            
+            <mat-progress-bar mode="indeterminate" *ngIf="spinner"></mat-progress-bar>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+

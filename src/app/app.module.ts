@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +11,8 @@ import { DialogHTMLComponent } from './components/dialog-html/dialog-html.compon
 import { EditComponent } from './pages/edit/edit.component';
 import { FormsModule } from '@angular/forms';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthInterceptor } from './services/auth/auth.interceptor';
 
 
 
@@ -22,7 +24,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     HeaderComponent,
     DialogHTMLComponent,
     EditComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,13 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
