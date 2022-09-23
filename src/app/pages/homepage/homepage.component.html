@@ -9,9 +9,9 @@
   <div class="activation_table_list" [hidden]="spinner">
     <div class="mat-elevation-z8">
       <div class="container pt-2">
-        <mat-form-field>
+        <mat-form-field class="w-100">
           <mat-label> Filter</mat-label>
-          <input matInput placeholder="Filter" (keyup)="filterChange($event)">
+          <input matInput placeholder="Filter"  (keyup)="filterChange($event)">
         </mat-form-field>
       </div>
       <table mat-table matSort [dataSource]="dataSource">
@@ -30,37 +30,37 @@
         </ng-container>
 
         <ng-container matColumnDef="Key">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Activation Key </th>
+          <th mat-header-cell *matHeaderCellDef> Activation Key </th>
           <td mat-cell *matCellDef="let element"> {{element.activationKey}} </td>
         </ng-container>
 
         <ng-container matColumnDef="License Name">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> License Name </th>
+          <th mat-header-cell  *matHeaderCellDef> License Name </th>
           <td mat-cell *matCellDef="let element"> {{element.license_name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="MacAddress">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> MacAddress </th>
+          <th mat-header-cell  *matHeaderCellDef> MacAddress </th>
           <td mat-cell *matCellDef="let element"> {{element.macAddress}} </td>
         </ng-container>
 
         <ng-container matColumnDef="IpAddress">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> IpAddress </th>
+          <th mat-header-cell  *matHeaderCellDef> IpAddress </th>
           <td mat-cell *matCellDef="let element"> {{element.ipAddress}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Date">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Activated On </th>
+          <th mat-header-cell  *matHeaderCellDef> Activated On </th>
           <td mat-cell *matCellDef="let element"> {{element.date}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Expired">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Expired </th>
+          <th mat-header-cell  *matHeaderCellDef> Expired </th>
           <td mat-cell *matCellDef="let element"> {{element.expired}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Status">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Status </th>
+          <th mat-header-cell  *matHeaderCellDef> Status </th>
           <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
 
