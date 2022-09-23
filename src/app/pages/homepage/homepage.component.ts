@@ -6,6 +6,7 @@ import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-homepage',
@@ -17,12 +18,13 @@ export class HomepageComponent implements  OnInit {
   activationKeys: any;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
 
   dataSource: any;
 
   spinner: any = true;
   
-  displayedColumns: string[] = ['index', 'id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
+  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
 
   constructor( private http: ApiService, public dialog: MatDialog, private route: Router, private storage: StorageService ) { }
 
@@ -38,12 +40,18 @@ export class HomepageComponent implements  OnInit {
         this.activationKeys = res
         this.dataSource = new MatTableDataSource(this.activationKeys)
         this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort
       },
       (err) => {
         console.log(err)
         alert('Internet Not Stable! Try Again Later')
       }
     )
+  }
+  
+  filterChange(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue
   }
 
   editKey(data: any) {
