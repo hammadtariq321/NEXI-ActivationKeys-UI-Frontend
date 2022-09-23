@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.component';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-homepage',
@@ -15,6 +16,9 @@ export class HomepageComponent implements  OnInit {
 
   activationKeys: any;
   
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+
+  dataSource: any;
 
   spinner: any = true;
   
@@ -32,6 +36,8 @@ export class HomepageComponent implements  OnInit {
       (res) => {
         this.spinner = false
         this.activationKeys = res
+        this.dataSource = new MatTableDataSource(this.activationKeys)
+        this.dataSource.paginator = this.paginator
       },
       (err) => {
         console.log(err)
