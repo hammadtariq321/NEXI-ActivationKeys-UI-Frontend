@@ -14,6 +14,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class HomepageComponent implements  OnInit {
 
   activationKeys: any;
+  
 
   spinner: any = true;
   
