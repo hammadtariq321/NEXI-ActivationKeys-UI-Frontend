@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
         console.log(err)
         if (err.error.non_field_errors) {
           this.invalid = true;
+        } else  {
+          alert('Something went wrong, Please try again')
         }
       }
     )
