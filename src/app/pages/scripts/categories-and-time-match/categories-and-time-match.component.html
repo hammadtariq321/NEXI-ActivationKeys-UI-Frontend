@@ -30,10 +30,14 @@
           </tr>
           <tr>
             <th scope="row">Client</th>
-            <td>{{ response?.clientdb.basic }}</td>
-            <td>{{ response?.clientdb.complete }}</td>
-            <td>{{ response?.clientdb.family }}</td>
-            <td>{{ response?.clientdb.pro }}</td>
+            <td [style.background-color]="response?.reference.basic > response?.clientdb.basic || response?.reference.basic < response?.clientdb.basic  ? '#ff000026' : 'null'">
+              {{ response?.clientdb.basic }}</td>
+            <td [style.background-color]="response?.reference.complete > response?.clientdb.complete || response?.reference.complete < response?.clientdb.complete ? '#ff000026' : 'null'">
+              {{ response?.clientdb.complete }}</td>
+            <td [style.background-color]="response?.reference.family > response?.clientdb.family || response?.reference.family < response?.clientdb.family ? '#ff000026' : 'null'">
+              {{ response?.clientdb.family }}</td>
+            <td [style.background-color]="response?.reference.pro > response?.clientdb.pro || response?.reference.pro < response?.clientdb.pro ? '#ff000026' : 'null'">
+              {{ response?.clientdb.pro }}</td>
           </tr>
         </tbody>
       </table>
