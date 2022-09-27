@@ -6,6 +6,10 @@
     </div>
     <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
     <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
+    <div class="check_library" *ngIf="response">
+      <p style="color: green;" *ngIf="response?.libraryA_ZIncluded"><b>Client Database has Library A-Z Programs Included</b></p>
+      <p style="color: red;" *ngIf="!response?.libraryA_ZIncluded"><b>Library A-Z Programs Not Found in Client Database</b></p>
+    </div>
     <table class="table" *ngIf="response">
         <thead class="thead-light">
           <tr>
