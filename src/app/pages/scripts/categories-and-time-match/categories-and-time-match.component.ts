@@ -11,6 +11,9 @@ export class CategoriesAndTimeMatchComponent implements OnInit {
   fileselected:any = false;
   spinner:any = false;
 
+  response:any;
+  
+
   constructor(
     private api: ApiService
   ) { }
@@ -30,6 +33,7 @@ export class CategoriesAndTimeMatchComponent implements OnInit {
       (res) => {
         console.log(res)
         this.spinner = false
+        this.response = res
       }, 
       (err)=> {
         console.log(err)
