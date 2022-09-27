@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
-  { path: 'category-and-time-match', component: CategoriesAndTimeMatchComponent},
+  { path: 'category-and-time-match', component: CategoriesAndTimeMatchComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
