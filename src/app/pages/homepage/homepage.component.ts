@@ -26,11 +26,26 @@ export class HomepageComponent implements  OnInit {
   
   displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
 
-  constructor( private http: ApiService, public dialog: MatDialog, private route: Router, private storage: StorageService ) { }
-
-
+  constructor( private http: ApiService, public dialog: MatDialog, private route: Router, private storage: StorageService ) { 
+    
+  }
+  
+  
   ngOnInit(): void {
-    this.getActivationKeys()
+    
+  }
+
+  ngAfterViewInit() {
+    let keys = this.storage.activationKeysResponse
+    console.log(keys)
+    if (keys){
+      this.dataSource = new MatTableDataSource(keys)
+      this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort
+      this.spinner = false
+    } else {
+      this.getActivationKeys()
+    }
   }
 
   getActivationKeys() {
@@ -41,10 +56,12 @@ export class HomepageComponent implements  OnInit {
         this.dataSource = new MatTableDataSource(this.activationKeys)
         this.dataSource.paginator = this.paginator
         this.dataSource.sort = this.sort
+        this.storage.activationKeysResponse  = res
       },
       (err) => {
         console.log(err)
-        alert('Internet Not Stable! Try Again Later')
+        alert('Internet Not Stable! Trying again :(')
+        this.getActivationKeys()
       }
     )
   }

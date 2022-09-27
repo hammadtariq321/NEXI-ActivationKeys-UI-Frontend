@@ -23,7 +23,7 @@ export class EditComponent implements OnInit {
     this.licenseForm = this.storage.selectedActivationKey
     if (!this.licenseForm) {
       alert('Please Select Again')
-      this.route.navigateByUrl('/')
+      this.route.navigateByUrl('/home')
     }
   }
 
@@ -36,7 +36,7 @@ export class EditComponent implements OnInit {
         console.log(res)
         this.openSnackBar()
         this.spinner = false
-        this.route.navigateByUrl('/')
+        this.route.navigateByUrl('/home')
       },
       (err) => {
         console.log(err)
@@ -46,7 +46,7 @@ export class EditComponent implements OnInit {
   }
 
   cancel() {
-    this.route.navigateByUrl('/')
+    this.route.navigateByUrl('/home')
   }
 
   openSnackBar() {

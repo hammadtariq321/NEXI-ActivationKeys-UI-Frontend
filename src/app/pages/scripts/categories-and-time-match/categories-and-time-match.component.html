@@ -7,7 +7,7 @@
     <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
     <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
     <table class="table" *ngIf="response">
-        <thead class="thead-dark">
+        <thead class="thead-light">
           <tr>
             <th scope="col">Type</th>
             <th scope="col">Basic</th>
@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-md-6">
             <table class="table" *ngIf="response">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Category Not Found</th>
@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-6">
             <table class="table" *ngIf="response">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Category</th>

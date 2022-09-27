@@ -8,7 +8,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomepageComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
   { path: 'category-and-time-match', component: CategoriesAndTimeMatchComponent},
 ];

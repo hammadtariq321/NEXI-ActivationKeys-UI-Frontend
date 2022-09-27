@@ -9,8 +9,8 @@ const headers = new HttpHeaders()
 })
 export class ApiService {
 
-  // api_url = 'https://nexsusactivation.herokuapp.com'
-  api_url = 'http://127.0.0.1:8000'
+  api_url = 'https://nexsusactivation.herokuapp.com'
+  // api_url = 'http://127.0.0.1:8000'
 
 
   constructor(private http: HttpClient) { }
