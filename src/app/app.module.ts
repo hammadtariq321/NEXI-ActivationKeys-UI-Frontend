@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './services/auth/auth.interceptor';
+import { CategoriesAndTimeMatchComponent } from './pages/scripts/categories-and-time-match/categories-and-time-match.component';
 
 
 
@@ -25,7 +26,8 @@ import { AuthInterceptor } from './services/auth/auth.interceptor';
     DialogHTMLComponent,
     EditComponent,
     SnackbarComponent,
-    LoginComponent
+    LoginComponent,
+    CategoriesAndTimeMatchComponent
   ],
   imports: [
     BrowserModule,

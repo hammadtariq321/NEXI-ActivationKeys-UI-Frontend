@@ -1,0 +1,11 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="text-center m-5">
+      <h1>Category and Time Match</h1>
+    </div>
+    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
+    <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
+    
+</div>
+

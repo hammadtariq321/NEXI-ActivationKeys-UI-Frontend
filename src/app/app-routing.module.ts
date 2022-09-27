@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditComponent } from './pages/edit/edit.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CategoriesAndTimeMatchComponent } from './pages/scripts/categories-and-time-match/categories-and-time-match.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
+  { path: 'category-and-time-match', component: CategoriesAndTimeMatchComponent},
 ];
 
 @NgModule({
