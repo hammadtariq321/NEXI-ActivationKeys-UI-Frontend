@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ScriptsModule } from './modules/scripts/scripts.module';
 import { EditComponent } from './pages/edit/edit.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
-  { path: 'category-and-time-match', component: CategoriesAndTimeMatchComponent, canActivate: [AuthGuard]},
+  { path: 'scripts', loadChildren: () => import('./modules/scripts/scripts.module').then(m => m.ScriptsModule)},
+  {path: '**', redirectTo: '/home'},
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './services/auth/auth.interceptor';
 import { CategoriesAndTimeMatchComponent } from './pages/scripts/categories-and-time-match/categories-and-time-match.component';
+import { ScriptsListComponent } from './pages/scripts/scripts-list/scripts-list.component';
 
 
 
@@ -27,7 +28,8 @@ import { CategoriesAndTimeMatchComponent } from './pages/scripts/categories-and-
     EditComponent,
     SnackbarComponent,
     LoginComponent,
-    CategoriesAndTimeMatchComponent
+    CategoriesAndTimeMatchComponent,
+    ScriptsListComponent
   ],
   imports: [
     BrowserModule,
