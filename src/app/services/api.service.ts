@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 
-const headers = new HttpHeaders()
-.set('Content-Type', 'application/json')
+// const headers = new HttpHeaders()
+// .set('Content-Type', 'application/json')
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  // api_url = 'https://nexsusactivation.herokuapp.com'
-  api_url = 'http://127.0.0.1:8000'
+  api_url = 'https://nexsusactivation.herokuapp.com'
+  // api_url = 'http://127.0.0.1:8000'
 
 
   constructor(private http: HttpClient) { }
@@ -29,6 +29,10 @@ export class ApiService {
 
   CategoryTimeMatch(body:any) {
     return this.http.post(this.api_url + '/upload/', body )
+  }
+
+  ValidateFullBodyScan(body:any) {
+    return this.http.post(this.api_url + '/fullbodyscan/', body )
   }
 
 }

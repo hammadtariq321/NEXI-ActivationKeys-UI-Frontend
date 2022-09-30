@@ -8,7 +8,7 @@ import { ScriptsRoutingModule } from './scripts-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    ScriptsRoutingModule
+    ScriptsRoutingModule,
   ]
 })
 export class ScriptsModule { }

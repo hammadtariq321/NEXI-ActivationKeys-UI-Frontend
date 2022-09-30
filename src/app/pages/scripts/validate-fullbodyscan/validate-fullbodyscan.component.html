@@ -1,0 +1,80 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="text-center m-5">
+        <h1>Validate Full Body Scan</h1>
+    </div>
+    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
+    <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
+
+
+    <div *ngIf="response">
+
+        <div class="valid_file" *ngIf="response?.isFileCorrect">
+            <mat-icon aria-hidden="false" aria-label="" fontIcon="verified_user" height></mat-icon>
+            <p>Full Body Scan Db is Valid</p>
+            <button mat-button routerLink="/scripts">Go Back</button>
+        </div>
+        <mat-accordion *ngIf="!response?.isFileCorrect">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Full Body Scan Report
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span style="color: red;">
+                            File is Not Valid
+                        </span>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p style="color: green;" *ngIf="response?.isFileCorrect">
+                    Total Reference File Programs are:
+                    <b>{{response?.totalrefPrograms}}</b>
+                    and Found:
+                    <b>{{response?.totalclientPrograms}}</b>
+                </p>
+                <p style="color: red;" *ngIf="!response?.isFileCorrect">
+                    Total Reference File Programs are:
+                    <b>{{response?.totalrefPrograms}}</b>
+                    and Found:
+                    <b>{{response?.totalclientPrograms}}</b>
+                </p>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">SubSubProgram Not Found</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of response?.not_found; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.program_name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">SubSubProgram</th>
+                            <th scope="col">Frequency Not Found</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of response?.frequiencyNotFound; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.program_name }}</td>
+                            <td>{{ category.frequency }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+</div>

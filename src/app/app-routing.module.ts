@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
-  { path: 'scripts', loadChildren: () => import('./modules/scripts/scripts.module').then(m => m.ScriptsModule)},
+  { path: 'scripts', loadChildren: () => import('./modules/scripts/scripts.module').then(m => m.ScriptsModule) , canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/home'},
 ];
 
