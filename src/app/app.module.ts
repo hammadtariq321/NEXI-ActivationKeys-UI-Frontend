@@ -16,6 +16,8 @@ import { AuthInterceptor } from './services/auth/auth.interceptor';
 import { CategoriesAndTimeMatchComponent } from './pages/scripts/categories-and-time-match/categories-and-time-match.component';
 import { ScriptsListComponent } from './pages/scripts/scripts-list/scripts-list.component';
 import { ValidateFullbodyscanComponent } from './pages/scripts/validate-fullbodyscan/validate-fullbodyscan.component';
+import { ValidateImgfolderComponent } from './pages/scripts/validate-imgfolder/validate-imgfolder.component';
+import { ValidateFrequencyfolderComponent } from './pages/scripts/validate-frequencyfolder/validate-frequencyfolder.component';
 
 
 
@@ -31,7 +33,9 @@ import { ValidateFullbodyscanComponent } from './pages/scripts/validate-fullbody
     LoginComponent,
     CategoriesAndTimeMatchComponent,
     ScriptsListComponent,
-    ValidateFullbodyscanComponent
+    ValidateFullbodyscanComponent,
+    ValidateImgfolderComponent,
+    ValidateFrequencyfolderComponent
   ],
   imports: [
     BrowserModule,

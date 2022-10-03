@@ -35,4 +35,12 @@ export class ApiService {
     return this.http.post(this.api_url + '/fullbodyscan/', body )
   }
 
+  ValidateImgFolder(body:any) {
+    return this.http.post(this.api_url + '/imgfolder/', body )
+  }
+
+  ValidateFrequencyFolder(body:any) {
+  return this.http.post(this.api_url + '/freqfolder/', body )
+  }
+
 }

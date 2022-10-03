@@ -13,7 +13,7 @@ import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.componen
 export class EditComponent implements OnInit {
 
   licenseForm: any;
-  licenseList = ['NEXI Home Basic', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Pro']
+  licenseList = ['NEXI Home Basic', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Pro', 'NEXI Pro IQS']
 
   durationInSeconds = 5;
   spinner: any = false;
