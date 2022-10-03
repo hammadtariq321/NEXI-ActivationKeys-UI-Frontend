@@ -6,7 +6,9 @@ import { DialogHTMLComponent } from 'src/app/components/dialog-html/dialog-html.
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarSuccessComponent } from 'src/app/components/snackbar-success/snackbar-success.component';
 
 @Component({
   selector: 'app-homepage',
@@ -23,10 +25,17 @@ export class HomepageComponent implements  OnInit {
   dataSource: any;
 
   spinner: any = true;
+  durationInSeconds = 5;
   
   displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
 
-  constructor( private http: ApiService, public dialog: MatDialog, private route: Router, private storage: StorageService ) { 
+  constructor( 
+    private http: ApiService, 
+    public dialog: MatDialog, 
+    private route: Router, 
+    private storage: StorageService,
+    private _snackBar: MatSnackBar
+    ) { 
     
   }
   
@@ -44,7 +53,9 @@ export class HomepageComponent implements  OnInit {
       this.dataSource.sort = this.sort
       this.spinner = false
     } else {
-      this.getActivationKeys()
+      setTimeout(() => {
+        this.getActivationKeys()
+      }, 5000);
     }
   }
 
@@ -85,8 +96,26 @@ export class HomepageComponent implements  OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
+      if (result) {
+        this.http.DeleteActivationKey(data.id).subscribe(
+          (res) => {
+            this.openSnackBar()
+            this.getActivationKeys()
+          },
+          (err) => {
+            alert('Try Agin later')
+            console.log(err)
+          }
+        )
+      }
     })
   }
 
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarSuccessComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+  
 
 }

@@ -9,8 +9,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 })
 export class ApiService {
 
-  api_url = 'https://nexsusactivation.herokuapp.com'
-  // api_url = 'http://127.0.0.1:8000'
+  // api_url = 'https://nexsusactivation.herokuapp.com'
+  api_url = 'http://127.0.0.1:8000'
 
 
   constructor(private http: HttpClient) { }
@@ -25,6 +25,10 @@ export class ApiService {
   
   UpdateActivationKey(id: number, body: any) {
     return this.http.put(this.api_url + '/activation/' + id + '/', body)
+  }
+  
+  DeleteActivationKey(id: number) {
+    return this.http.delete(this.api_url + '/activation/' + id + '/')
   }
 
   CategoryTimeMatch(body:any) {

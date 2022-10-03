@@ -18,6 +18,7 @@ import { ScriptsListComponent } from './pages/scripts/scripts-list/scripts-list.
 import { ValidateFullbodyscanComponent } from './pages/scripts/validate-fullbodyscan/validate-fullbodyscan.component';
 import { ValidateImgfolderComponent } from './pages/scripts/validate-imgfolder/validate-imgfolder.component';
 import { ValidateFrequencyfolderComponent } from './pages/scripts/validate-frequencyfolder/validate-frequencyfolder.component';
+import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar-success.component';
 
 
 
@@ -35,7 +36,8 @@ import { ValidateFrequencyfolderComponent } from './pages/scripts/validate-frequ
     ScriptsListComponent,
     ValidateFullbodyscanComponent,
     ValidateImgfolderComponent,
-    ValidateFrequencyfolderComponent
+    ValidateFrequencyfolderComponent,
+    SnackbarSuccessComponent
   ],
   imports: [
     BrowserModule,
