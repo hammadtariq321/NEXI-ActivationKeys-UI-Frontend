@@ -96,7 +96,7 @@ export class HomepageComponent implements  OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      if (result) {
+      if (result == true) {
         this.http.DeleteActivationKey(data.id).subscribe(
           (res) => {
             this.openSnackBar()

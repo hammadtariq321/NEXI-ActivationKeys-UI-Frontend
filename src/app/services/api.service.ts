@@ -9,8 +9,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 })
 export class ApiService {
 
-  // api_url = 'https://nexsusactivation.herokuapp.com'
-  api_url = 'http://127.0.0.1:8000'
+  api_url = 'https://nexsusactivation.herokuapp.com'
+  // api_url = 'http://127.0.0.1:8000'
 
 
   constructor(private http: HttpClient) { }
@@ -37,6 +37,10 @@ export class ApiService {
 
   ValidateFullBodyScan(body:any) {
     return this.http.post(this.api_url + '/fullbodyscan/', body )
+  }
+  
+  ValidateTreatmentPrograms(body:any) {
+    return this.http.post(this.api_url + '/treatmentprograms/', body )
   }
 
   ValidateImgFolder(body:any) {

@@ -19,6 +19,8 @@ import { ValidateFullbodyscanComponent } from './pages/scripts/validate-fullbody
 import { ValidateImgfolderComponent } from './pages/scripts/validate-imgfolder/validate-imgfolder.component';
 import { ValidateFrequencyfolderComponent } from './pages/scripts/validate-frequencyfolder/validate-frequencyfolder.component';
 import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar-success.component';
+import { DateAdapter } from '@angular/material/core';
+import { ValidateTreatmentprogramsComponent } from './pages/scripts/validate-treatmentprograms/validate-treatmentprograms.component';
 
 
 
@@ -37,7 +39,8 @@ import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar
     ValidateFullbodyscanComponent,
     ValidateImgfolderComponent,
     ValidateFrequencyfolderComponent,
-    SnackbarSuccessComponent
+    SnackbarSuccessComponent,
+    ValidateTreatmentprogramsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,4 +59,8 @@ import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale("en-in"); // DD/MM/YYYY
+  }
+ }

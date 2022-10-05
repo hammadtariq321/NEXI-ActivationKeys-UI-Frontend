@@ -10,15 +10,11 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>KEY</mat-label>
-            <input matInput [(ngModel)]="licenseForm.activationKey">
+            <input matInput [(ngModel)]="licenseForm.activationKey" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>License Name</mat-label>
-            <mat-select [(ngModel)]="licenseForm.license_name" name="licensename">
-                <mat-option *ngFor="let license of licenseList" [value]="license">
-                    {{license}}
-                </mat-option>
-            </mat-select>
+            <mat-label>Activated On</mat-label>
+            <input matInput [(ngModel)]="licenseForm.date" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>MAC ADDRESS</mat-label>
@@ -30,20 +26,29 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>STATUS</mat-label>
-            <input matInput [(ngModel)]="licenseForm.status" disabled>
+            <!-- <input matInput [(ngModel)]="licenseForm.status" disabled> -->
+            <mat-select [(ngModel)]="licenseForm.status" name="status">
+                <mat-option *ngFor="let s of status" [value]="s">
+                    {{s}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Activated On</mat-label>
-            <input matInput [(ngModel)]="licenseForm.date" disabled>
+            <mat-label>License Name</mat-label>
+            <mat-select [(ngModel)]="licenseForm.license_name" name="licensename">
+                <mat-option *ngFor="let license of licenseList" [value]="license">
+                    {{license}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>EXPIRED</mat-label>
-            <input matInput [(ngModel)]="licenseForm.expired">
-            <!-- <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" [value]="licenseForm.expired">
-            <mat-hint>MM/DD/YYYY</mat-hint>
+            <!-- <mat-label>EXPIRED</mat-label>
+            <input matInput [(ngModel)]="licenseForm.expired"> -->
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker"  placeholder="Choose a date" [(ngModel)]="expiredate">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker> -->
+            <mat-datepicker touchUi #picker ></mat-datepicker>
         </mat-form-field>
         <div class="mt-5">
             <button mat-button color="primary" (click)="update()" [hidden]="spinner">Update</button>

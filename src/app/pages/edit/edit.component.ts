@@ -4,6 +4,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
+import { FormControl } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit',
@@ -14,22 +16,39 @@ export class EditComponent implements OnInit {
 
   licenseForm: any;
   licenseList = ['NEXI Home Basic', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Pro', 'NEXI Pro IQS']
+  status = [true, false]
+  expiredate: any;
 
   durationInSeconds = 5;
   spinner: any = false;
-  constructor(private storage: StorageService, private route: Router, private api: ApiService, private _snackBar: MatSnackBar) { }
-
+  constructor(private storage: StorageService, private route: Router, private api: ApiService, private _snackBar: MatSnackBar) {
+  }
+  
   ngOnInit(): void {
     this.licenseForm = this.storage.selectedActivationKey
     if (!this.licenseForm) {
       alert('Please Select Again')
       this.route.navigateByUrl('/home')
     }
+    // const currentDate = moment();
+    
+    // this.date = moment(this.licenseForm.expired).format('DD-MM-YYY');
+    // this.date = new FormControl("2022-03-02")
+    const convertDate = moment(this.licenseForm.expired, "DD/MM/YYYY").format("YYYY-MM-DD")
+    this.expiredate = convertDate
+    // this.date = new FormControl("2022-02-02") // YYYY-MM-DD
+    console.log(this.expiredate)
+    // console.log(this.date.value, this.licenseForm.expired)
   }
+
 
   update() {
     this.spinner = true
+    // const body = this.licenseForm
+    this.licenseForm.expired = moment(this.expiredate , "YYYY-MM-DD").format("DD/MM/YYYY")
+    // body.expired = selectedDate
     console.log(this.licenseForm)
+    // console.log(this.date.value)
     let body = this.licenseForm
     this.api.UpdateActivationKey(body.id, body).subscribe(
       (res) => {
