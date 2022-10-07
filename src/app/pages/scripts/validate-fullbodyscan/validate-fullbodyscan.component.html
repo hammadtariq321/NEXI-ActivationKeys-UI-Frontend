@@ -44,18 +44,20 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">ID</th>
-                            <th scope="col">SubSubProgram Not Found</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Remarks</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let category of response?.not_found; let i = index">
+                        <tr [ngClass]="category.color == 'red' ? 'red' : 'green'" *ngFor="let category of response?.not_found; let i = index">
                             <th scope="row">{{i + 1}}</th>
                             <td>{{ category.id }}</td>
-                            <td>{{ category.program_name }}</td>
+                            <td>NOK ({{ category.program_name }})</td>
+                            <td>{{ category.program_name }} {{ category.message }}</td>
                         </tr>
                     </tbody>
                 </table>
-                <table class="table">
+                <!-- <table class="table">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
@@ -72,7 +74,7 @@
                             <td>{{ category.frequency }}</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
             </mat-expansion-panel>
         </mat-accordion>
 

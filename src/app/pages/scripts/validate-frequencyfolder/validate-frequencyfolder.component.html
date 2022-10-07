@@ -32,13 +32,15 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Frequency Not Found</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Remarks</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let freq of response?.frequencyNotFound; let i = index">
+                        <tr [ngClass]="freq.color == 'red' ? 'red' : 'green'" *ngFor="let freq of response?.frequencyNotFound; let i = index" >
                             <th scope="row">{{i + 1}}</th>
-                            <td>{{ freq }}</td>
+                            <td>NOK ({{ freq.status }})</td>
+                            <td>{{ freq.status }} {{ freq.message }}</td>
                         </tr>
                     </tbody>
                 </table>

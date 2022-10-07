@@ -23,7 +23,7 @@
                     </mat-panel-title>
                     <mat-panel-description>
                         <span style="color: red;">
-                            File is Not Valid
+                            Failed because {{response?.data.length}} / {{response?.total_ref_programs}} entries don't match
                         </span>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -32,16 +32,34 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">ID</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Message</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Remarks</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let res of response?.data; let i = index">
+                        <tr *ngFor="let res of response?.data; let i = index" class="red">
                             <th scope="row">{{i + 1}}</th>
-                            <td>{{ res.program.id }}</td>
-                            <td>{{ res.program.Category }}</td>
-                            <td>{{ res.message }}</td>
+                            <td>{{ res.id }}</td>
+                            <td>NOK ({{ res.message }})</td>
+                            <td>Expected = <b>{{ res.reference }}</b>,  Actual = <b>{{ res.program }}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of response?.programsInClientDb; let i = index" class="green">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{ res.id }}</td>
+                            <td>NOK ({{ res.Category }})</td>
+                            <td>{{ res.Category }} found in Client Db</td>
                         </tr>
                     </tbody>
                 </table>
