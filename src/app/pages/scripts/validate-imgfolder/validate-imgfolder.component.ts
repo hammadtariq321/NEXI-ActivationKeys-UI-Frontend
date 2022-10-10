@@ -24,13 +24,23 @@ export class ValidateImgfolderComponent implements OnInit {
   }
   
   fileResponse(event: any) {
+    let imgArry = []
+    if (event.target.files.length > 0){
+      let files = event.target.files;
+      console.log(files)
+      for (let f of files) {
+        console.log(f.name)
+        imgArry.push(f.name)
+      }
+    }  
+
     this.fileselected = true
     this.spinner = true
-    let file = event.target.files[0]
-    console.log(file)
-    let formData = new FormData(); 
-    formData.append('file_uploaded', file); 
-    this.api.ValidateImgFolder(formData).subscribe(
+    // let file = event.target.files[0]
+    // console.log(file)
+    // let formData = new FormData(); 
+    // formData.append('file_uploaded', file); 
+    this.api.ValidateImgFolder({'imgs': imgArry}).subscribe(
       (res) => {
         console.log(res)
         this.spinner = false

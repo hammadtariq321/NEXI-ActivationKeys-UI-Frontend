@@ -4,7 +4,7 @@
     <div class="text-center m-5">
         <h1>Validate Images Folder</h1>
     </div>
-    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
+    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected" webkitdirectory multiple>
     <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
 
 

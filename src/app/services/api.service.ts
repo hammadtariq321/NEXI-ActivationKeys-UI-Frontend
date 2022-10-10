@@ -44,7 +44,7 @@ export class ApiService {
   }
 
   ValidateImgFolder(body:any) {
-    return this.http.post(this.api_url + '/imgfolder/', body )
+    return this.http.post(this.api_url + '/imgfolder/',body )
   }
 
   ValidateFrequencyFolder(body:any) {
