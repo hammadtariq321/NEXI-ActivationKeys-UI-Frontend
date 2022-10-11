@@ -4,7 +4,7 @@
     <div class="text-center m-5">
         <h1>Validate Frequency Folder</h1>
     </div>
-    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
+    <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected" webkitdirectory multiple>
     <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
 
 
@@ -12,7 +12,7 @@
 
         <div class="valid_file" *ngIf="response?.isFileCorrect">
             <mat-icon aria-hidden="false" aria-label="" fontIcon="verified_user" height></mat-icon>
-            <p>Img Folder is Valid</p>
+            <p>Frequency Folder is Valid</p>
             <button mat-button routerLink="/scripts">Go Back</button>
         </div>
         <mat-accordion *ngIf="!response?.isFileCorrect">
