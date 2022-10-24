@@ -25,6 +25,10 @@
             <input matInput [(ngModel)]="licenseForm.ipAddress" disabled>
         </mat-form-field>
         <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="licenseForm.username" disabled>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>STATUS</mat-label>
             <!-- <input matInput [(ngModel)]="licenseForm.status" disabled> -->
             <mat-select [(ngModel)]="licenseForm.status" name="status">
@@ -38,6 +42,14 @@
             <mat-select [(ngModel)]="licenseForm.license_name" name="licensename">
                 <mat-option *ngFor="let license of licenseList" [value]="license">
                     {{license}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Version</mat-label>
+            <mat-select [(ngModel)]="licenseForm.version" name="licensename">
+                <mat-option *ngFor="let version of versionList" [value]="version">
+                    {{version}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

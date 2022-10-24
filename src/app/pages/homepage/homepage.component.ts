@@ -27,7 +27,7 @@ export class HomepageComponent implements  OnInit {
   spinner: any = true;
   durationInSeconds = 5;
   
-  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Action'];
+  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Username', 'Version', 'Action'];
 
   constructor( 
     private http: ApiService, 

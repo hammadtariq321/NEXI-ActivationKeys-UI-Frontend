@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import csvDownload from 'json-to-csv-export'
+
+const ipAddressesData = [
+  {
+    id: "1",
+    name: "Sarajane Wheatman",
+    ip: "40.98.252.240"
+  },
+  {
+    id: "2",
+    name: "Linell Humpherston",
+    ip: "82.225.151.150"
+  }
+]
 
 @Component({
   selector: 'app-validate-treatmentprograms',
@@ -40,6 +54,16 @@ export class ValidateTreatmentprogramsComponent implements OnInit {
         this.spinner = false
       }
     )
+  }
+
+  downloadCSVReport() {
+    const dataToConvert = {
+      data: this.response.programsInClientDb,
+      filename: 'treatment_program_report',
+      delimiter: ',',
+      // headers: ['IP', "Full Name", "IP Address"]
+    }
+    csvDownload(dataToConvert)
   }
 
 }

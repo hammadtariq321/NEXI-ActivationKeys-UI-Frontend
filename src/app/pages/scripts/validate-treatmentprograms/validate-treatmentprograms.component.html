@@ -4,6 +4,7 @@
     <div class="text-center m-5">
         <h1>Validate Treatment Programs</h1>
     </div>
+
     <input class="form-control" type="file" id="formFile" (change)="fileResponse($event)" [hidden]="fileselected">
     <mat-spinner style="margin: auto;" *ngIf="spinner"></mat-spinner>
 
@@ -27,6 +28,7 @@
                         </span>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
+                <button class="btn btn-primary mb-3" (click)="downloadCSVReport()">Download Report</button>
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
