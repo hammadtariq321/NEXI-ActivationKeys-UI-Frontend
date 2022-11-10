@@ -15,7 +15,7 @@ import * as moment from 'moment';
 export class EditComponent implements OnInit {
 
   licenseForm: any;
-  licenseList = ['NEXI Spirit', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Pro', 'NEXI Pro IQS', 'NEXI Advance']
+  licenseList = ['NEXI Home Transcend', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Home Advanced', 'NEXI Pro', 'NEXI Pro Animal']
   versionList = ['Nexi160', 'Nexi200v3', 'Nexi200v5', 'Nexi221', 'Nexi222', 'Nexi230']
   status = [true, false]
   expiredate: any;
