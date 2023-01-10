@@ -72,6 +72,7 @@ export class HomepageComponent implements  OnInit {
       (err) => {
         console.log(err)
         alert('Internet Not Stable! Trying again :(')
+        this.http.api_url = "https://nexsus-activation-backup.herokuapp.com"
         this.getActivationKeys()
       }
     )
