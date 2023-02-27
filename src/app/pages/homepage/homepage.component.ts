@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarSuccessComponent } from 'src/app/components/snackbar-success/snackbar-success.component';
+import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-homepage',
@@ -28,7 +29,7 @@ export class HomepageComponent implements  OnInit {
   durationInSeconds = 5;
   
   displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Username', 'Type','Version','Action'];
-
+  typeList = ['Client', 'Test', 'Sales Partner']
   constructor( 
     private http: ApiService, 
     public dialog: MatDialog, 
@@ -117,6 +118,29 @@ export class HomepageComponent implements  OnInit {
       duration: this.durationInSeconds * 1000,
     });
   }
+
+  openSnackBarSuccess() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
   
+
+  onTypeChange(row: any) {
+    console.log('edited Row',row)
+    let body = row
+    this.http.UpdateActivationKey(body.id, body).subscribe(
+      (res) => {
+        console.log(res)
+        this.openSnackBarSuccess()
+        this.spinner = false
+        this.route.navigateByUrl('/home')
+      },
+      (err) => {
+        console.log(err)
+        this.spinner = false
+      }
+    )
+  }
 
 }
