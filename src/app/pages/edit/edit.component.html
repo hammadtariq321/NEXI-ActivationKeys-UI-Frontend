@@ -38,6 +38,15 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+            <!-- <input matInput [(ngModel)]="licenseForm.status" disabled> -->
+            <mat-select [(ngModel)]="licenseForm.type" name="type">
+                <mat-option *ngFor="let s of typeList" [value]="s">
+                    {{s}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>License Name</mat-label>
             <mat-select [(ngModel)]="licenseForm.license_name" name="licensename">
                 <mat-option *ngFor="let license of licenseList" [value]="license">
