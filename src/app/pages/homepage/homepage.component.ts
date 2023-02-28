@@ -19,7 +19,6 @@ import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.componen
 export class HomepageComponent implements  OnInit {
 
   activationKeys: any;
-  activationKeysCopy: any;
 
   
   @ViewChild(MatPaginator) paginator!: MatPaginator
@@ -72,7 +71,6 @@ export class HomepageComponent implements  OnInit {
         this.dataSource.paginator = this.paginator
         this.dataSource.sort = this.sort
         this.storage.activationKeysResponse  = res
-        this.storage.defaultActivationKeysResponse  = {...res}
         this.http.UpdateUserLogs(`Fetched the activation keys from HomePage`)
       },
       (err) => {
@@ -138,9 +136,6 @@ export class HomepageComponent implements  OnInit {
   onTypeChange(row: any) {
     console.log('edited Row',row)
     
-    const filteredData = this.activationKeysCopy.filter((item: any) => item.activationKey === row.activationKey);
-    console.log('filteredData',filteredData)
-
 
     let body = row
     this.http.UpdateActivationKey(body.id, body).subscribe(
@@ -148,7 +143,7 @@ export class HomepageComponent implements  OnInit {
         console.log(res)
         this.openSnackBarSuccess()
         this.spinner = false
-        this.http.UpdateUserLogs(`License Type Updated of License ${row.activationKey}: ${filteredData[0].type} to ${row.type}`)
+        this.http.UpdateUserLogs(`License Type Updated of License ${row.activationKey}: to ${row.type}`)
         this.route.navigateByUrl('/home')
       },
       (err) => {
