@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="container">
+    <mat-list>
+        <div *ngFor="let res of response">
+            <p style="margin-top: 10px">
+                <b>{{res.created_at | date: 'medium'}}</b>
+            </p>
+            <p>{{res.log}}</p>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>

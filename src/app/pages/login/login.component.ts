@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         console.log(res)
         this.spinner = false
         localStorage.setItem('userToken', res.token)
+        localStorage.setItem('user_id', res.id)
         this.route.navigateByUrl('/home')
       },
       (err) => {

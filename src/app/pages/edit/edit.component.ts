@@ -15,6 +15,7 @@ import * as moment from 'moment';
 export class EditComponent implements OnInit {
 
   licenseForm: any;
+  licenseFormOrigional: any;
   licenseList = ['NEXI Home Transcend', 'NEXI Home Complete', 'NEXI Home Family', 'NEXI Home Advanced', 'NEXI Pro', 'NEXI Pro Animal']
   versionList = ['Nexi160', 'Nexi200v3', 'Nexi200v5', 'Nexi221', 'Nexi222', 'Nexi230', 'Nexi240']
   typeList = ['Client', 'Test', 'Sales Partner']
@@ -28,6 +29,7 @@ export class EditComponent implements OnInit {
   
   ngOnInit(): void {
     this.licenseForm = this.storage.selectedActivationKey
+    this.licenseFormOrigional = this.storage.selectedActivationKey
     if (!this.licenseForm) {
       alert('Please Select Again')
       this.route.navigateByUrl('/home')
@@ -58,6 +60,7 @@ export class EditComponent implements OnInit {
         this.openSnackBar()
         this.spinner = false
         this.route.navigateByUrl('/home')
+        this.api.UpdateUserLogs(`License Form Updated From ${JSON.stringify(this.licenseFormOrigional)} to ${JSON.stringify(this.licenseForm)}`)
       },
       (err) => {
         console.log(err)
@@ -68,6 +71,7 @@ export class EditComponent implements OnInit {
 
   cancel() {
     this.route.navigateByUrl('/home')
+    this.api.UpdateUserLogs(`Cencel Button CLicked amd Nvigating Back to Homepage`)
   }
 
   openSnackBar() {

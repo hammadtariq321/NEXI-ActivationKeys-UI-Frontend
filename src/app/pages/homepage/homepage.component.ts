@@ -69,11 +69,13 @@ export class HomepageComponent implements  OnInit {
         this.dataSource.paginator = this.paginator
         this.dataSource.sort = this.sort
         this.storage.activationKeysResponse  = res
+        this.http.UpdateUserLogs(`Fetched the activation keys from HomePage`)
       },
       (err) => {
         console.log(err)
         alert('Internet Not Stable! Trying again :(')
-        this.http.api_url = "https://nexsus-activation-backup.herokuapp.com"
+        this.http.UpdateUserLogs(`Not able to fetch the activation keys from HomePage due to Internal Server Error`)
+        // this.http.api_url = "https://nexsus-activation-backup.herokuapp.com"
         this.getActivationKeys()
       }
     )
@@ -83,11 +85,13 @@ export class HomepageComponent implements  OnInit {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue
   }
-
+  
   editKey(data: any) {
     console.log(data)
     this.storage.selectedActivationKey = data
     if (this.storage.selectedActivationKey) {
+      this.http.UpdateUserLogs(`Navigated to the key ${JSON.stringify(this.storage.selectedActivationKey)}`)
+
       this.route.navigateByUrl('edit')
     }
   }

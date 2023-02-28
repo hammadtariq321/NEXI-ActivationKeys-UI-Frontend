@@ -21,6 +21,7 @@ import { ValidateFrequencyfolderComponent } from './pages/scripts/validate-frequ
 import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar-success.component';
 import { DateAdapter } from '@angular/material/core';
 import { ValidateTreatmentprogramsComponent } from './pages/scripts/validate-treatmentprograms/validate-treatmentprograms.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 
 
@@ -34,13 +35,14 @@ import { ValidateTreatmentprogramsComponent } from './pages/scripts/validate-tre
     EditComponent,
     SnackbarComponent,
     LoginComponent,
+    HistoryComponent,
     CategoriesAndTimeMatchComponent,
     ScriptsListComponent,
     ValidateFullbodyscanComponent,
     ValidateImgfolderComponent,
     ValidateFrequencyfolderComponent,
     SnackbarSuccessComponent,
-    ValidateTreatmentprogramsComponent
+    ValidateTreatmentprogramsComponent,
   ],
   imports: [
     BrowserModule,
