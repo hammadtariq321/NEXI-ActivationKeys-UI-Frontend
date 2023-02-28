@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
 
+  defaultSelectedActivationKey: any ={}
   selectedActivationKey: any = {
       "id": 851169723432,
       "activationKey": "NexiHB9092772QMD",

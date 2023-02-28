@@ -27,9 +27,9 @@ export class EditComponent implements OnInit {
   constructor(private storage: StorageService, private route: Router, private api: ApiService, private _snackBar: MatSnackBar) {
   }
   
-  ngOnInit(): void {
+  ngOnInit() {
     this.licenseForm = this.storage.selectedActivationKey
-    this.licenseFormOrigional = this.storage.selectedActivationKey
+    this.licenseFormOrigional = {...this.licenseForm}
     if (!this.licenseForm) {
       alert('Please Select Again')
       this.route.navigateByUrl('/home')
@@ -48,6 +48,9 @@ export class EditComponent implements OnInit {
 
   update() {
     this.spinner = true
+    console.log('Before',this.licenseForm)
+    console.log('After',this.licenseFormOrigional)
+    
     // const body = this.licenseForm
     this.licenseForm.expired = moment(this.expiredate , "YYYY-MM-DD").format("DD/MM/YYYY")
     // body.expired = selectedDate
@@ -60,7 +63,7 @@ export class EditComponent implements OnInit {
         this.openSnackBar()
         this.spinner = false
         this.route.navigateByUrl('/home')
-        this.api.UpdateUserLogs(`License Form Updated From ${JSON.stringify(this.licenseFormOrigional)} to ${JSON.stringify(this.licenseForm)}`)
+        // this.api.UpdateUserLogs(`License Form Updated From ${JSON.stringify(this.licenseFormOrigional)} to ${JSON.stringify(this.licenseForm)}`)
       },
       (err) => {
         console.log(err)
