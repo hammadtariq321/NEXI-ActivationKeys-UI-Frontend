@@ -45,12 +45,39 @@ export class EditComponent implements OnInit {
     // console.log(this.date.value, this.licenseForm.expired)
   }
 
+  compareObjects(obj1: any, obj2: any) {
+    const differences: any = {};
+  
+    // Get the keys of both objects
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+  
+    // Find keys that are unique to obj1
+    for (let key of keys1) {
+      if (!keys2.includes(key)) {
+        differences[key] = [obj1[key], undefined];
+      }
+    }
+  
+    // Find keys that are unique to obj2 or have different values
+    for (let key of keys2) {
+      if (!keys1.includes(key)) {
+        differences[key] = [undefined, obj2[key]];
+      } else if (obj1[key] !== obj2[key]) {
+        differences[key] = [obj1[key], obj2[key]];
+      }
+    }
+  
+    return differences;
+  }
+  
+
 
   update() {
     this.spinner = true
     console.log('Before',this.licenseForm)
     console.log('After',this.licenseFormOrigional)
-    
+    const findChanges = this.compareObjects(this.licenseFormOrigional, this.licenseForm)
     // const body = this.licenseForm
     this.licenseForm.expired = moment(this.expiredate , "YYYY-MM-DD").format("DD/MM/YYYY")
     // body.expired = selectedDate
@@ -63,7 +90,7 @@ export class EditComponent implements OnInit {
         this.openSnackBar()
         this.spinner = false
         this.route.navigateByUrl('/home')
-        // this.api.UpdateUserLogs(`License Form Updated From ${JSON.stringify(this.licenseFormOrigional)} to ${JSON.stringify(this.licenseForm)}`)
+        this.api.UpdateUserLogs(`License Form Updated of License ${this.licenseForm.activationKey}: ${JSON.stringify(findChanges)}`)
       },
       (err) => {
         console.log(err)
