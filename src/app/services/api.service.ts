@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   GetUserLogs() {
-    return this.http.get(this.api_url + '/userlogs/')
+    return this.http.get(this.api_url + '/userlogs/?user=' + this.helper.getUserId())
   }
   UpdateUserLogs(log: any) {
     let body = {'user': this.helper.getUserId(), 'log': log};
