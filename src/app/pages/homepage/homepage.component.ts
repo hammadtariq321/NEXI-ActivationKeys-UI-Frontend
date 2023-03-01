@@ -93,7 +93,7 @@ export class HomepageComponent implements  OnInit {
     this.storage.selectedActivationKey = data
     this.storage.defaultSelectedActivationKey = data
     if (this.storage.selectedActivationKey) {
-      this.http.UpdateUserLogs(`Navigated to the key ${JSON.stringify(this.storage.selectedActivationKey)}`)
+      this.http.UpdateUserLogs(`Navigated to the key ${JSON.stringify(this.storage.selectedActivationKey.activationKey)}`)
 
       this.route.navigateByUrl('edit')
     }
