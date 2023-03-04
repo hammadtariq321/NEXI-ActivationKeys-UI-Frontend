@@ -29,7 +29,7 @@ export class HomepageComponent implements  OnInit {
   spinner: any = true;
   durationInSeconds = 5;
   
-  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'IpAddress', 'Status', 'Date', 'Expired', 'Username', 'Type','Version','Action'];
+  displayedColumns: string[] = ['id', 'Key', 'License Name', 'MacAddress', 'Status', 'Date', 'Expired', 'Username', 'Type','Version','Action'];
   typeList = ['Client', 'Test', 'Sales Partner']
   constructor( 
     private http: ApiService, 
