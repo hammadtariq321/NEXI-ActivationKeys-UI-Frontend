@@ -10,9 +10,9 @@ import { HelperService } from './helper.service';
 })
 export class ApiService {
 
-  // api_url = 'https://nexsusactivation.herokuapp.com'
+  api_url = 'https://nexsusactivation.herokuapp.com'
   // api_url = 'https://nexsus-activation-backup.herokuapp.com'
-  api_url = 'http://127.0.0.1:8000' 
+  // api_url = 'http://127.0.0.1:8000' 
 
   httpHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
 
