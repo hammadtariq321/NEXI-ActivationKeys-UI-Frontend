@@ -101,7 +101,7 @@ export class EditComponent implements OnInit {
 
   cancel() {
     this.route.navigateByUrl('/home')
-    this.api.UpdateUserLogs(`Cencel Button CLicked amd Nvigating Back to Homepage`)
+    this.api.UpdateUserLogs(`Cancel Button CLicked and Navigating Back to Homepage`)
   }
 
   openSnackBar() {

@@ -9,16 +9,24 @@ import { ApiService } from 'src/app/services/api.service';
 export class HistoryComponent implements OnInit {
 
   response: any;
+  users: any;
 
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.GetUserLogs().subscribe(
+    this.api.GetUsersList().subscribe(
+      (res: any) => { this.users = res; },
+      (err: any) => { console.log(err)}
+    )
+   
+  }
+
+  getUserLog (user:any) {
+    this.api.GetUserLogs(user).subscribe(
       (res: any) => { this.response = res; },
       (err: any) => { console.log(err)}
     )
   }
-
   
 
 }

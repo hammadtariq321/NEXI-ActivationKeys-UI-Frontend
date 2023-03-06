@@ -14,6 +14,7 @@ export class ApiService {
   // api_url = 'https://nexsus-activation-backup.herokuapp.com'
   api_url = 'http://127.0.0.1:8000' 
 
+  httpHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
 
   constructor(private http: HttpClient, private helper: HelperService) { }
 
@@ -25,6 +26,10 @@ export class ApiService {
     return this.http.get(this.api_url + '/activation/')
   }
   
+  GetUsersList() {  
+    return this.http.get(this.api_url + '/users/')
+  }
+  
   UpdateActivationKey(id: number, body: any) {
     return this.http.put(this.api_url + '/activation/' + id + '/', body)
   }
@@ -33,8 +38,8 @@ export class ApiService {
     return this.http.delete(this.api_url + '/activation/' + id + '/')
   }
 
-  GetUserLogs() {
-    return this.http.get(this.api_url + '/userlogs/?user=' + this.helper.getUserId())
+  GetUserLogs(user: any) {
+    return this.http.get(this.api_url + '/userlogs/?user=' + user )
   }
   UpdateUserLogs(log: any) {
     let body = {'user': this.helper.getUserId(), 'log': log};
@@ -62,6 +67,11 @@ export class ApiService {
 
   ValidateFrequencyFolder(body:any) {
   return this.http.post(this.api_url + '/freqfolder/', body )
+  }
+
+  ChangePassword(user:any) {
+    let body = `old_password=${user.old_password}&new_password=${user.new_password}`
+    return this.http.put(this.api_url + '/change-password/', body, {headers: this.httpHeader})
   }
 
 }

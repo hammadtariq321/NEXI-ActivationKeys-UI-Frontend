@@ -22,6 +22,7 @@ import { SnackbarSuccessComponent } from './components/snackbar-success/snackbar
 import { DateAdapter } from '@angular/material/core';
 import { ValidateTreatmentprogramsComponent } from './pages/scripts/validate-treatmentprograms/validate-treatmentprograms.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 
 
@@ -43,6 +44,7 @@ import { HistoryComponent } from './pages/history/history.component';
     ValidateFrequencyfolderComponent,
     SnackbarSuccessComponent,
     ValidateTreatmentprogramsComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

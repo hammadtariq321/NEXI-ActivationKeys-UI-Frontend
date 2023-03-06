@@ -4,7 +4,8 @@
       <div class="nav_items_">
         <span [routerLink]="['/home']" routerLinkActive="active">Activation System</span>
         <span [routerLink]="['/scripts']" routerLinkActive="active">Test Automation System</span>
-        <span [routerLink]="['/history']" routerLinkActive="active">History</span>
+        <span [routerLink]="['/history']" *ngIf="userid == 1" routerLinkActive="active">History</span>
+        <span [routerLink]="['/change-password']" routerLinkActive="active">Change Password</span>
       </div>
       <span class="example-spacer"></span>
       <button mat-raised-button color="warn" (click)="logout()">Logout</button>

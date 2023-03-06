@@ -1,13 +1,27 @@
 <app-header></app-header>
 
 <div class="container">
-    <mat-list>
-        <div *ngFor="let res of response">
-            <p style="margin-top: 10px">
-                <b>{{res.created_at | date: 'medium'}}</b>
-            </p>
-            <p>{{res.log}}</p>
-            <mat-divider></mat-divider>
+    <div class="row">
+        <div class="col-md-3">
+            <mat-list>
+                <div *ngFor="let user of users" (click)="getUserLog(user.id)">
+                    <mat-list-item>{{user.username}}</mat-list-item>
+                    <mat-divider></mat-divider>
+                </div>
+              </mat-list>
+              
         </div>
-    </mat-list>
+        <div class="col-md-9">
+            <mat-list>
+                <div *ngFor="let res of response">
+                    <p style="margin-top: 10px">
+                        <b>{{res.created_at | date: 'medium'}}</b>
+                    </p>
+                    <p>{{res.log}}</p>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-list>
+        </div>
+    </div>
+    
 </div>
